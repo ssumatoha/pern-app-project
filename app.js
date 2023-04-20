@@ -4,11 +4,15 @@ const sequelize = require('./db')
 const models = require('./models/models')
 const cors = require('cors')
 const router = require('./routs/index')
+const errorHandler = require('./middleware/errorHendlingMiddleware')
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 app.use('/api', router)
+
+// обработка ошибок
+app.use(errorHandler)
 
 const PORT = config.get('port') || 5000
 
