@@ -4,5 +4,6 @@
     "dbUser": "postgres",
     "dbPassword": "strike3736176",
     "dbHost": "localhost",
-    "dbPort": 5432
+    "dbPort": 5432,
+    "secretKey": "weq1231ew1e1w"
 }

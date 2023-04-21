@@ -9,7 +9,11 @@ class NoteController {
     }
 
     async get(req, res) {
-        const notes = await Note.findAll()
+        let {limit, page} = req.query
+        page = page || 1
+        limit = limit || 10
+        let offset = page * limit - limit
+        const notes = await Note.findAndCountAll({limit, offset})
         return res.json(notes)
     }
 }

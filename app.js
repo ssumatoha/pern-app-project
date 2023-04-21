@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 const config = require('config')
 const sequelize = require('./db')
 const models = require('./models/models')
