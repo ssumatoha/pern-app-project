@@ -13,7 +13,7 @@ const genJwt = (id, email, role) => {
 }
 
 class UserController {
-    async registration(req, res) {
+    async registration(req, res, next) {
         const { email, password, role } = req.body
         if(!email || !password) {
             return next(ApiError.badReqest('email или пароль не верны'))
@@ -28,16 +28,22 @@ class UserController {
         return res.json({token})
     }
 
-    async login(req, res) {
-
+    async login(req, res, next) {
+        const { email, password } = req.body
+        const user = await User.findOne({where: {email}})
+        if(!user) {
+            return next(ApiError.internal('Пользователь не имеет аккаунта'))
+        }
+        let comparePassword = bcript.compareSync(password, user.password)
+        if(!comparePassword) {
+            return next(ApiError.internal('Указан неверный пароль'))
+        }
+        const token = genJwt(user.id, user.email, user.role)
+        return res.json({token})
     }
 
     async auth(req, res, next) {
-        const {id} = req.query
-        if (!id) {
-            return next(ApiError.badReqest('не задан id'))
-        }
-        res.json(id)
+        return res.json({message: 'All work'})
     }
 }
 
