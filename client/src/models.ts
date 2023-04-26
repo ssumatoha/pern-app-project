@@ -6,7 +6,7 @@ export interface INote {
     userId: number | null
 }
 
-export interface INotes {
+export interface INotesResponse {
     count: number,
     rows: INote[]
 }

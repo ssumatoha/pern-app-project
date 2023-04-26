@@ -1,6 +1,6 @@
-import { INotes } from "../models";
+import { INotesResponse } from "../models";
 
-export const notes: INotes[]= [
+export const notes: INotesResponse[]= [
     {
         count: 3,
         rows: [

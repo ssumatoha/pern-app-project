@@ -1,8 +1,8 @@
-import { INotes } from "../models"
+import { INotesResponse } from "../models"
 import { Note } from "./Note"
 
 interface NotesProps {
-    notes: INotes
+    notes: INotesResponse
 }
 
 export const Notes = (props: NotesProps) => {
