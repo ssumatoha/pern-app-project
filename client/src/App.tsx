@@ -16,7 +16,7 @@ function App() {
       <div className='container mx-auto max-w-2xl pt-5'>
         <Notes notes={notes}/>
       </div>
-      <Modal>
+      <Modal title='Создать новую запись'>
         <CreateNote/>
       </Modal>
     </div>

@@ -15,7 +15,7 @@ export const Note = (props: NoteProps) => {
     <div className="border py-2 px-4 rounded flex flex-col item-center mb-2">
         <div className="flex">
             <h3 className="text-1xl font-bold flex-1 w-64">Заметка номер {props.note.id}</h3>
-            <button 
+            <button
             className={resultStyle.join()}
             onClick={() => setTextState(status => !status)}>
                 {!textState ? 'Открыть содержание' : 'Закрыть содержание'}
