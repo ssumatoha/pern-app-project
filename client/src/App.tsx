@@ -4,21 +4,32 @@ import { useNotes } from './hooks/notes';
 import { Loader } from './components/Loader';
 import { Modal } from './components/Modal';
 import { CreateNote } from './components/CreateNote';
+import { useState } from 'react';
+import { INote } from './models';
 
 function App() {
 
-  const {notes, loading} = useNotes()
+  const [modal, setModal] = useState(false)
+
+  const {notes, loading, addNote} = useNotes()
+
+  const createHendler = (note: INote) => {
+    setModal(false)
+    addNote(note)
+  }
 
   return (
     <div className='bg-slate-700'>
       <Header/>
       { loading && <Loader/> }
       <div className='container mx-auto max-w-2xl pt-5'>
-        <Notes notes={notes}/>
+        <Notes setModal={setModal} notes={notes}/>
       </div>
-      <Modal title='Создать новую запись'>
-        <CreateNote/>
+      {
+      modal && <Modal title='Создать новую запись'>
+        <CreateNote onCreate={ createHendler } />
       </Modal>
+      }
     </div>
   );
 }

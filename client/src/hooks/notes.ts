@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { INotesResponse } from '../models';
+import { INote, INotesResponse } from '../models';
 
 
 export const useNotes = () => {
@@ -11,6 +11,10 @@ export const useNotes = () => {
     })
     
     const [loading, setLoading] = useState(false)
+
+    const addNote = (note: INote) => {
+        setNotes(prev => ({count: prev.count, rows: [...prev.rows, note]}))
+    }
     
     async function fetchNotes() {
         setLoading(true)
@@ -23,6 +27,6 @@ export const useNotes = () => {
         fetchNotes()
     }, [])
 
-    return { notes, loading }
+    return { notes, loading, addNote }
 
 }

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 interface IButton {
-    props: string[]
+    props: string[],
 }
 
 export const Button = ( { props }: IButton) => {
@@ -12,9 +12,11 @@ export const Button = ( { props }: IButton) => {
     const resultStyle = ['flex-1 w-32 rounded-full border-solid', btnStyles]
 
     return (
-        <button 
+        <button type="submit"
             className={resultStyle.join()}
-            onClick={() => setTextState(status => !status)}>
+            onClick={() => {
+                setTextState(status => !status)
+            }}>
                 {!textState ? props[0] : props[1]}
             </button>
     )

@@ -1,9 +1,9 @@
 export interface INote {
-    id: number,
+    id?: number,
     text: string,
-    createdAt: string,
-    updatedAt: string,
-    userId: number | null
+    createdAt?: string,
+    updatedAt?: string,
+    userId?: number | null
 }
 
 export interface INotesResponse {
